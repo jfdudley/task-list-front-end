@@ -27,13 +27,32 @@ const App = () => {
     });
     setTaskData(tasks);
   };
+  const deleteTask = (id) => {
+    console.log('deleteTask');
+    let tasks = [];
+    for (const task of taskData) {
+      if (task.id != id) {
+        tasks.push(task);
+      }
+    }
+    console.log(tasks);
+    setTaskData(tasks);
+  };
   return (
     <div className="App">
       <header className="App-header">
         <h1>Ada&apos;s Task List</h1>
       </header>
       <main>
-        <div>{<TaskList tasks={taskData} onUpdateTask={updateTaskData} />}</div>
+        <div>
+          {
+            <TaskList
+              tasks={taskData}
+              onUpdateTask={updateTaskData}
+              onDeleteTask={deleteTask}
+            />
+          }
+        </div>
       </main>
     </div>
   );

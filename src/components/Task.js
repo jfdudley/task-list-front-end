@@ -15,6 +15,7 @@ const Task = (props) => {
     };
     props.onUpdate(updatedTask);
   };
+
   return (
     <li className="tasks__item">
       <button
@@ -23,7 +24,14 @@ const Task = (props) => {
       >
         {props.title}
       </button>
-      <button className="tasks__item__remove button">x</button>
+      <button
+        className="tasks__item__remove button"
+        onClick={() => {
+          props.onDelete(props.id);
+        }}
+      >
+        x
+      </button>
     </li>
   );
 };
@@ -33,6 +41,7 @@ Task.propTypes = {
   title: PropTypes.string.isRequired,
   isComplete: PropTypes.bool.isRequired,
   onUpdate: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Task;
